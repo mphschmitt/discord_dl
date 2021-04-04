@@ -102,6 +102,9 @@ tar -zxvf "/tmp/$APP_NAME.tar.gz" -C /tmp
 sudo rm -rf "$APP_DIRECTORY/$APP_NAME"
 sudo mv "$DOWNLOAD_DIRECTORY/$APP_NAME" "$APP_DIRECTORY/$APP_NAME"
 
-sudo rm "/usr/bin/$PROGRAM_NAME"
+if [ -f /usr/bin/$PROGRAM_NAME ]
+then
+	sudo rm "/usr/bin/$PROGRAM_NAME"
+fi
 sudo ln -s "$APP_DIRECTORY/$APP_NAME/$APP_NAME" "/usr/bin/$PROGRAM_NAME"
 
