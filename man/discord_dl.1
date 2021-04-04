@@ -1,0 +1,47 @@
+.TH discord_dl 1  "April 4, 2021" "version 1.0" "USER COMMANDS"
+.SH NAME
+discord_dl \- Download and update discord.
+.SH SYNOPSIS
+.B discord_dl
+.SH DESCRIPTION
+.B discord_dl
+downloads the latest version of discord from discord api, and install it on the system.
+.PP
+.B discord_dl
+lets you choose between the 'canary' and 'ptb' builds of discord.
+Canary is an alpha build, with more features than ptb, but also less stable.
+By default, the ptb version is installed.
+
+To update discord, or to switch build, just relaunch discord_dl.
+.SH OPTIONS
+.TP
+.B \-h, --help
+display this help message and exit
+.TP
+.B \-c, --canary
+download the canary build
+.TP
+.B \-p, --ptb
+download the ptb build
+.TP
+.B \-v, --version
+output version information and exit
+.SH EXAMPLES
+.TP
+Download the ptb build
+discord_dl -p
+.PP
+.SH EXIT STATUS
+discord_dl returns a zero exist status if it succeeds to install/update discord.
+Non zero is returned in case of failure.
+.SH AUTHOR
+Written by
+.B Mathias Schmitt
+.SH COPYRIGHT
+.PP
+Copyright (C) 2021  Mathias Schmitt
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
