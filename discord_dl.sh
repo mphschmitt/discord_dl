@@ -16,11 +16,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-PROGRAM_NAME="discord"
+PROGRAM="discord"
 VERSION="1.0.0"
+PROGRAM_DIRECTORY="/usr/bin"
 
 APP_DIRECTORY="/opt"
 APP_NAME="Discord"
+
+WRAPPER="discord_wrapper.sh"
 
 DOWNLOAD_DIRECTORY="/tmp"
 URL_PTB="https://discord.com/api/download?platform=linux&format=tar.gz"
@@ -120,15 +123,22 @@ install () {
 		curl -L "$1" -o "$DOWNLOAD_DIRECTORY/$APP_NAME.tar.gz"
 	fi
 
+	# Extract discord to the application directory
 	tar -zxvf "$DOWNLOAD_DIRECTORY/$APP_NAME.tar.gz" -C /tmp
 	sudo rm -rf "$APP_DIRECTORY/$APP_NAME"
 	sudo mv "$DOWNLOAD_DIRECTORY/$APP_NAME" "$APP_DIRECTORY/$APP_NAME"
 
-	if [ -f /usr/bin/$PROGRAM_NAME ]
+	# Add the wrapper the application directory
+	# The wrapper allows us to launch discord as a background process and
+	# to redirect its output to /dev/null
+	sudo echo "/$APP_DIRECTORY/$APP_NAME/$APP_NAME > /dev/null 2>&1 &" | sudo tee "$APP_DIRECTORY/$WRAPPER"
+	sudo chmod u+x,g+x,a+x "$APP_DIRECTORY/$WRAPPER"
+
+	if [ -f "$PROGRAM_DIRECTORY/$PROGRAM" ]
 	then
-		sudo rm "/usr/bin/$PROGRAM_NAME"
+		sudo rm "$PROGRAM_DIRECTORY/$PROGRAM"
 	fi
-	sudo ln -s "$APP_DIRECTORY/$APP_NAME/$APP_NAME" "/usr/bin/$PROGRAM_NAME"
+	sudo ln -s "$APP_DIRECTORY/$WRAPPER" "$PROGRAM_DIRECTORY/$PROGRAM"
 }
 
 if [ $# -eq 0 ]
