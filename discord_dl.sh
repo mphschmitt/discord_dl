@@ -52,12 +52,6 @@ get_cmd () {
 	echo "$CMD"
 }
 
-# discord_dl arguments
-if [ $# -eq 0 ]
-then
-	echo "No directory specified, installing in \$HOME: $HOME"
-fi
-
 if [[ $(command -v curl) == ""  ]]
 then
 	echo "curl not found, trying wget..."
@@ -90,5 +84,5 @@ tar -zxvf "/tmp/$APP_NAME.tar.gz" -C /tmp
 sudo rm -rf "$APP_DIRECTORY/$APP_NAME"
 sudo mv "$DOWNLOAD_DIRECTORY/$APP_NAME" "$APP_DIRECTORY/$APP_NAME"
 
-sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+sudo ln -sf "$APP_DIRECTORY/$APP_NAME/$APP_NAME" /usr/bin/discord
 
