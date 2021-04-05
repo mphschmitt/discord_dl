@@ -31,6 +31,9 @@ install: install_man
 .PHONY: uninstall
 uninstall: uninstall_man
 	@rm ${INSTALL_DIR}/${PROG_NAME}
+	@rm /usr/bin/discord
+	@rm -rf /opt/Discord
+	@rm /opt/discord_wrapper.sh
 
 .PHONY: install_man
 install_man:
