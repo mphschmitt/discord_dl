@@ -3,6 +3,7 @@
 discord_dl \- Telecharge et met discord a jour.
 .SH SYNOPSIS
 .B discord_dl
+[\-hcpv]
 .SH DESCRIPTION
 .B discord_dl
 telecharge la dernier version de discord depuis l'api, et l'installe sur le systeme.
@@ -29,7 +30,20 @@ afficher les informations de version et quitte.
 .SH EXAMPLES
 .TP
 Telecharge le build ptb
-discord_dl -p
+.B discord_dl
+-p
+.PP
+.TP
+Comme il s'agit du comportement par defaut, le build ptb peut aussi etre installe ainsi
+.B discord_dl
+.PP
+.TP
+Mettre à jour le build ptb de discord
+.B discord_dl
+.PP
+.TP
+Remplacer le build ptb par le build canary
+.B discord_dl -c
 .PP
 .SH EXIT STATUS
 discord_dl retourne zero si l'installation/mise-a-jour de discord a reussie.

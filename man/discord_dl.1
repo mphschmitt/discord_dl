@@ -3,9 +3,10 @@
 discord_dl \- Download and update discord.
 .SH SYNOPSIS
 .B discord_dl
+[\-hcpv]
 .SH DESCRIPTION
 .B discord_dl
-downloads the latest version of discord from discord api, and install it on the system.
+downloads the latest version of discord from discord's api, and install it on the system.
 .PP
 .B discord_dl
 lets you choose between the 'canary' and 'ptb' builds of discord.
@@ -29,7 +30,20 @@ output version information and exit
 .SH EXAMPLES
 .TP
 Download the ptb build
-discord_dl -p
+.B discord_dl
+-p
+.PP
+.TP
+Since this is the default behavior, the ptb build can also be installed using
+.B discord_dl
+.PP
+.TP
+Update discord's ptb build
+.B discord_dl
+.PP
+.TP
+Switch from ptb build to canary build
+.B discord_dl -c
 .PP
 .SH EXIT STATUS
 discord_dl returns a zero exist status if it succeeds to install/update discord.
