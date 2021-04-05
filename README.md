@@ -1,3 +1,13 @@
+# Table of Contents
+
+- [About the project](#discord_dl)
+- [Install](#installation)
+- [Usage](#usage)
+- [How does it work](#how-does-it-work)
+- [License](#license)
+- [Contact](#contact)
+
+
 # discord_dl
 
 Discord installation management for Linux.
