@@ -10,10 +10,14 @@ downloads the latest version of discord from discord's api, and install it on th
 .PP
 .B discord_dl
 lets you choose between the 'canary' and 'ptb' builds of discord.
-Canary is an alpha build, with more features than ptb, but also less stable.
+Canary is an alpha build, with more features and bug fixes than ptb, but also less stable.
 By default, the ptb version is installed.
 
 To update discord, or to switch build, just relaunch discord_dl.
+
+.B discord_dl
+also installs the
+.B discord\fR command, a launcher for discord.
 .SH OPTIONS
 .TP
 .B \-h, --help
@@ -44,6 +48,10 @@ Update discord's ptb build
 .TP
 Switch from ptb build to canary build
 .B discord_dl -c
+.PP
+.TP
+Launch discord
+.B discord
 .PP
 .SH EXIT STATUS
 discord_dl returns a zero exist status if it succeeds to install/update discord.

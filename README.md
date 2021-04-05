@@ -100,7 +100,7 @@ sudo make uninstall
 Discord is downloaded and installed in `/opt/Discord`.
 
 By default, Discord is blocking, and displays output to the stdout.
-To avoid that, discord_dl creates a wrapper aroung Discord, launching it as a background process and redirecting its output to */dev/null*.
+To avoid that, discord_dl creates a wrapper around Discord, launching it as a background process and redirecting its output to */dev/null*.
 
 When calling `discord`, you are actually calling `/opt/discord_wrapper.sh` symlinked to `/usr/bin/discord`.
 
