@@ -95,6 +95,9 @@ get_cmd () {
 install () {
 	printf "Installing discord %b\n" $1
 
+	# Remove legacy file if it exists.
+	rm -rf /tmp/$APP_NAME.tar.gz
+
 	if [[ $(command -v curl) == ""  ]]
 	then
 		echo "curl not found, trying wget..."
@@ -131,7 +134,8 @@ install () {
 	# Add the wrapper the application directory
 	# The wrapper allows us to launch discord as a background process and
 	# to redirect its output to /dev/null
-	sudo echo "/$APP_DIRECTORY/$APP_NAME/$APP_NAME > /dev/null 2>&1 &" | sudo tee "$APP_DIRECTORY/$WRAPPER"
+	LOWER_APP_NAME=${APP_NAME,,}
+	sudo echo "/$APP_DIRECTORY/$APP_NAME/$LOWER_APP_NAME > /dev/null 2>&1 &" | sudo tee "$APP_DIRECTORY/$WRAPPER"
 	sudo chmod u+x,g+x,a+x "$APP_DIRECTORY/$WRAPPER"
 
 	if [ -f "$PROGRAM_DIRECTORY/$PROGRAM" ]
