@@ -121,7 +121,7 @@ install () {
 			exit
 		fi
 
-		wget "$1" -P "$DOWNLOAD_DIRECTORY"
+		wget "$1" -P "$DOWNLOAD_DIRECTORY" -O "$APP_NAME.tar.gz"
 	else
 		curl -L "$1" -o "$DOWNLOAD_DIRECTORY/$APP_NAME.tar.gz"
 	fi
