@@ -97,6 +97,7 @@ install () {
 
 	# Remove legacy file if it exists.
 	rm -rf /tmp/$APP_NAME.tar.gz
+	ARCHIVE="$DOWNLOAD_DIRECTORY/$APP_NAME.tar.gz"
 
 	if [[ $(command -v curl) == ""  ]]
 	then
@@ -121,13 +122,21 @@ install () {
 			exit
 		fi
 
-		wget "$1" -P "$DOWNLOAD_DIRECTORY" -O "$APP_NAME.tar.gz"
+		if ! wget "$1" -O "$ARCHIVE"
+		then
+			echo "Failed to download Discord with wget."
+			exit 1
+		fi
 	else
-		curl -L "$1" -o "$DOWNLOAD_DIRECTORY/$APP_NAME.tar.gz"
+		if ! curl --fail --location --show-error --output "$ARCHIVE" "$1"
+		then
+			echo "Failed to download Discord with curl."
+			exit 1
+		fi
 	fi
 
 	# Extract discord to the application directory
-	tar -zxvf "$DOWNLOAD_DIRECTORY/$APP_NAME.tar.gz" -C /tmp
+	tar -zxvf "$ARCHIVE" -C /tmp
 	sudo rm -rf "$APP_DIRECTORY/$APP_NAME"
 	sudo mv "$DOWNLOAD_DIRECTORY/$APP_NAME" "$APP_DIRECTORY/$APP_NAME"
 
